@@ -361,6 +361,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+--- !u!1 &1050930918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050930920}
+  - component: {fileID: 1050930919}
+  m_Layer: 0
+  m_Name: FallingObstacle
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1050930919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050930918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87ad3d87b38df646a6476c9626ff532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayingShadowDuration: 1.5
+  fallingDuration: 0.8
+  shadowScaleModifier: {x: 1.5, y: 1.5}
+  shadowPrefab: {fileID: 2935146247792822019, guid: 03b22d45c4e7747498cffd84108b8b09, type: 3}
+  obstaclePrefab: {fileID: 2525161679640580763, guid: 177b354cb02cf4f45ab57312060f4b58, type: 3}
+--- !u!4 &1050930920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050930918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30.16, y: 12.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!115 &1110776818
 MonoScript:
   m_ObjectHideFlags: 0
@@ -443,6 +491,7 @@ GameObject:
   - component: {fileID: 1830374858}
   - component: {fileID: 1830374859}
   - component: {fileID: 1830374857}
+  - component: {fileID: 1830374861}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -509,11 +558,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830374854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30, y: -30, z: 0}
+  m_LocalPosition: {x: -38.48, y: -30, z: 0}
   m_LocalScale: {x: 2, y: 1.95, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1830374857
 MonoBehaviour:
@@ -587,6 +636,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1830374861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830374854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0736a67f7e9b8d04e9b0a7fc325e0303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1935300632
 GameObject:
   m_ObjectHideFlags: 0
