@@ -24,7 +24,7 @@ namespace Ingame
         private void Move()
         {
             var movingDirection = new Vector2(UiController.Instance.Joystick.Horizontal, UiController.Instance.Joystick.Vertical);
-            var deltaMoving = movingDirection * _playerEventSystem.Data.Speed * Time.deltaTime;
+            var deltaMoving = movingDirection * _playerEventSystem.PlayerStats.CurrentSpeed * Time.deltaTime;
 
             transform.position += (Vector3) deltaMoving;
         }
