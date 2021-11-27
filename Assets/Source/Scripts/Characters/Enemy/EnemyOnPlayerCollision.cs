@@ -11,7 +11,7 @@ namespace Ingame {
                 _enemyAttack = GetComponent<EnemyAttack>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if(other.TryGetComponent(out PlayerStats player))
             {
@@ -20,7 +20,7 @@ namespace Ingame {
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit2D(Collider2D other)
         {
             if (other.TryGetComponent(out PlayerStats player))
             {
