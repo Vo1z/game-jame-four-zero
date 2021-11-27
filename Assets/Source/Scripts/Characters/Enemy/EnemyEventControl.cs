@@ -3,7 +3,8 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Ingame.Event
+using Ingame.Movement;
+namespace Ingame.Events
 {
     public class EnemyEventControl : MonoBehaviour
     {
@@ -15,6 +16,7 @@ namespace Ingame.Event
 
         [Required]
         private EnemyStats _character;
+
         public EnemyData EnemyStatsData => enemyStatsData;
 
         private void Awake()
@@ -22,7 +24,6 @@ namespace Ingame.Event
             _character = GetComponent<EnemyStats>();
             _character.SetInitHp(enemyStatsData.InitHpBar);
         }
-
         public void Die()
         {
 
