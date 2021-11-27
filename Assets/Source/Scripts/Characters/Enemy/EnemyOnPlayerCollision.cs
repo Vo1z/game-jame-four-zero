@@ -1,22 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Ingame.Events;
-public class EnemyOnPlayerCollision : MonoBehaviour
-{
-    private void OnTriggerEnter(Collider other)
+namespace Ingame {
+     [RequireComponent(typeof(EnemyAttack))]
+    public class EnemyOnPlayerCollision : MonoBehaviour
     {
-        if(other.TryGetComponent(out PlayerEventSystem player))
+        private EnemyAttack _enemyAttack;
+        private void Awake()
         {
-            EnemyManager.Instance.DmgZoneEnter();
+                _enemyAttack = GetComponent<EnemyAttack>();
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out PlayerEventSystem player))
+        private void OnTriggerEnter(Collider other)
         {
-            EnemyManager.Instance.DmgZoneExit();
+            if(other.TryGetComponent(out PlayerStats player))
+            {
+                    _enemyAttack.ChangeRangeCondition(true);
+                    _enemyAttack.PeformAttackOnPlayer(player);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent(out PlayerStats player))
+            {
+                    _enemyAttack.ChangeRangeCondition(false);
+             }
         }
     }
 }

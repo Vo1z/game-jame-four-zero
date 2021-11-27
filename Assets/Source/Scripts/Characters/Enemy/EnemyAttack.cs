@@ -1,24 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemyAttack : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+using Ingame.Events;
+namespace Ingame { 
+    [RequireComponent(typeof(EnemyEventControl))]
+    public class EnemyAttack : MonoBehaviour
     {
-        EnemyManager.Instance.OnDmgZoneEnter += PeformAttackOnPlayer;
-        EnemyManager.Instance.OnDmgZoneExit += NullifyAttack;
+        private EnemyEventControl _enemyEvent;
+        private float _attackDmg;
+        private float _attackCoolDown;
+        private bool _isAttackCharging = false;
+        private bool _isPlayerOnRange = false;
+        private void Awake()
+        {
+            _enemyEvent = GetComponent<EnemyEventControl>();
+            _attackDmg = _enemyEvent.EnemyStatsData.AttackDmg;
+            _attackCoolDown = _enemyEvent.EnemyStatsData.AttackCoolDown;
+        }
 
-    }
-    private void PeformAttackOnPlayer()
-    {
-        
-    }
-   
-    private void NullifyAttack()
-    {
 
+        private IEnumerator AttackCoroutine(PlayerStats player)
+        {
+            _isAttackCharging = true;
+            yield return new WaitForSeconds(_attackCoolDown);
+            if (_isPlayerOnRange)
+            {
+                player.TakeDmg(_attackDmg);
+            }
+            _isAttackCharging = false;
+        }
+        public void PeformAttackOnPlayer(PlayerStats player)
+        {
+            if (!_isAttackCharging)
+            {
+                StartCoroutine(AttackCoroutine(player));
+            }
+        }
+        public void ChangeRangeCondition(bool b)
+        {
+            _isPlayerOnRange = b;
+        }
     }
-
 }
