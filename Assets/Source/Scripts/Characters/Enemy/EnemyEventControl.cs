@@ -1,24 +1,35 @@
+using Ingame.Stats;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemyEventControl : MonoBehaviour
+namespace Ingame.Event
 {
-    [Required]
-    [SerializeField]
-    private EnemyData enemyStats;
-
-    public EnemyData EnemyStats => enemyStats;
-    // Start is called before the first frame update
-    void Start()
+    public class EnemyEventControl : MonoBehaviour
     {
-        
-    }
+        [Required]
+        [SerializeField]
+        private EnemyData enemyStatsData;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private const float DISAPEARING_TIME = 0.4f;
+
+        [Required]
+        private EnemyStats _character;
+        public EnemyData EnemyStatsData => enemyStatsData;
+
+        private void Awake()
+        {
+            _character = GetComponent<EnemyStats>();
+            _character.SetInitHp(enemyStatsData.InitHpBar);
+        }
+
+        public void Die()
+        {
+
+           Destroy(this.gameObject, DISAPEARING_TIME);
+            
+        }
+
+
     }
 }
