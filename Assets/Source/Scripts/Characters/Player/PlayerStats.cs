@@ -1,3 +1,4 @@
+using Extensions;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support;
@@ -45,6 +46,7 @@ namespace Ingame
 
             _currentHp -= dmg;
             
+            _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
         }
 
@@ -54,6 +56,7 @@ namespace Ingame
 
             _currentHp += heal;
             
+            _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
         }
     }

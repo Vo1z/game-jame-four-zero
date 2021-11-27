@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101d94c948237ad4aa0c203efd24c513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 1
   damageDealingDuration: 0.5
 --- !u!1 &6042757140514984497
 GameObject:
