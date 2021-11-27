@@ -29,12 +29,20 @@ namespace Support
         /// <param name="isVictory">Describes whether player won or not</param>
         public void EndLevel(bool isVictory)
         {
-            if(_isLevelEnded)
+            if (_isLevelEnded)
                 return;
 
             _isLevelEnded = true;
 
             OnLevelEnded?.Invoke(isVictory);
         }
+
+        //enum
+        public enum TypeOfEvent
+        {
+            ReverseControll
+        }
+
+        
     }
 }

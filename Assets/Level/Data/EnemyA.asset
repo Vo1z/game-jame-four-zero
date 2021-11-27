@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: EnemyA
   m_EditorClassIdentifier: 
   _initHpBar: 5
+  _speed: 60
   _attackDmg: 2
   _attackCoolDown: 1

@@ -19,7 +19,13 @@ namespace Ingame {
                     _enemyAttack.PeformAttackOnPlayer(player);
             }
         }
-
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.TryGetComponent(out PlayerStats player))
+            {
+                _enemyAttack.PeformAttackOnPlayer(player);
+            }
+        }
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.TryGetComponent(out PlayerStats player))

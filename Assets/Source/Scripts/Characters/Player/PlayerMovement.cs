@@ -1,6 +1,8 @@
 using Ingame.Events;
 using Support.UI;
 using UnityEngine;
+using Support;
+using static Support.GameController;
 
 namespace Ingame
 {
@@ -9,7 +11,7 @@ namespace Ingame
     {
         private PlayerEventSystem _playerEventSystem;
         private Rigidbody2D _rigidbody2D;
-
+        private bool _directionReverse = false;
         private void Awake()
         {
             _playerEventSystem = GetComponent<PlayerEventSystem>();
@@ -21,10 +23,32 @@ namespace Ingame
             Move();
         }
 
+        private void OnWeirdThingHappend(TypeOfEvent type) 
+        {
+            switch (type)
+            {
+                case TypeOfEvent.ReverseControll:
+                    {
+                        _directionReverse = true;
+                        break;
+                    }
+            }
+        }
+        private void DeactiveWeirdThingHappend(TypeOfEvent type)
+        {
+            switch (type)
+            {
+                case TypeOfEvent.ReverseControll:
+                    {
+                        _directionReverse = false;
+                        break;
+                    }
+            }
+        }
         private void Move()
         {
             var movingDirection = new Vector2(UiController.Instance.Joystick.Horizontal, UiController.Instance.Joystick.Vertical);
-            var deltaMoving = movingDirection * _playerEventSystem.PlayerStats.CurrentSpeed * Time.deltaTime;
+            var deltaMoving = (_directionReverse ? -1 : 1) * movingDirection * _playerEventSystem.PlayerStats.CurrentSpeed * Time.deltaTime;
 
             transform.position += (Vector3) deltaMoving;
         }

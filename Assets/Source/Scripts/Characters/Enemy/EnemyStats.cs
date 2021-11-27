@@ -12,11 +12,13 @@ namespace Ingame.Stats
         private const float MARGIN_ERROR = 0.001f;
         private EnemyEventControl _enemyEventControl;
         private float _currHp;
+        private float _maxHp;
         public float CurrHp => _currHp;
 
         public void SetInitHp(float i)
         {
-            _currHp = i;
+            _maxHp = i;
+            _currHp = _maxHp;
         }
 
         public void Heal(float heal)

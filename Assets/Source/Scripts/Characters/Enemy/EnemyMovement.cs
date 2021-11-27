@@ -4,8 +4,10 @@ using UnityEngine;
 using Ingame.Events;
 using NaughtyAttributes;
 
-namespace Ingame.Movement { 
-        public class EnemyMovement : MonoBehaviour
+
+namespace Ingame.Movement {
+    [RequireComponent(typeof(EnemyEventControl))]
+    public class EnemyMovement : MonoBehaviour
     {
         
         [SerializeField]
@@ -14,7 +16,7 @@ namespace Ingame.Movement {
         [Required]
         private PlayerEventSystem player;
         private const float MARGIN_ERROR_MIN = .0001f;
-        private const float MARGIN_ERROR_MAX = 1f;
+        private const float MARGIN_ERROR_MAX = 2f;
         private Rigidbody2D _rb;
         
         private void Awake()
@@ -23,7 +25,7 @@ namespace Ingame.Movement {
             _rb = GetComponent<Rigidbody2D>();
             
         }
-        private void Update()
+        private void LateUpdate()
         {
             FollowPlayer();
         }
@@ -32,9 +34,10 @@ namespace Ingame.Movement {
             EnemyManager.Instance.OnFollowEnter +=FollowPlayer;
             EnemyManager.Instance.OnFollowExit += RunAwayFromPlayer;
         }
+        
         private void MakeMove(int i)
         {
-            float dirY = (player.transform.position.z-this.transform.position.z);
+            float dirY = (player.transform.position.y-this.transform.position.y);
             dirY = dirY > MARGIN_ERROR_MAX ? 1 : (dirY < MARGIN_ERROR_MIN ? -1 : 0);
 
 
