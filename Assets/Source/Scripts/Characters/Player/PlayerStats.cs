@@ -26,6 +26,8 @@ namespace Ingame
         {
             _currentHp = _playerEventSystem.Data.InitialHp;
             _currentSpeed = _playerEventSystem.Data.InitialSpeed;
+            
+            TakeDmg(5);
         }
 
         private void CheckPlayerCondition()
