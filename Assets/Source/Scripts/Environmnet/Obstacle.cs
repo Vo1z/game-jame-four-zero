@@ -1,4 +1,3 @@
-using System;
 using Extensions;
 using UnityEngine;
 
@@ -17,8 +16,8 @@ namespace Ingame
         {
             GetComponent<Collider2D>().isTrigger = true;
         }
-
-        private void OnTriggerStay(Collider other)
+        
+        private void OnTriggerStay2D(Collider2D other)
         {
             if(_obstacleState == ObstacleState.Resting)
                 return;

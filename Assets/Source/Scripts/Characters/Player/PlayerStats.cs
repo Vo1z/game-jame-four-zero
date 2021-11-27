@@ -1,4 +1,5 @@
 using Ingame.Events;
+using NaughtyAttributes;
 using Support;
 using UnityEngine;
 
@@ -8,7 +9,9 @@ namespace Ingame
     public class PlayerStats : MonoBehaviour, IActor
     {
         private PlayerEventSystem _playerEventSystem;
+        [ReadOnly]
         private float _currentHp;
+        [ReadOnly]
         private float _currentSpeed;
 
         public float CurrentSpeed => _currentSpeed;
@@ -33,6 +36,7 @@ namespace Ingame
         private void Die()
         {
             GameController.Instance.EndLevel(false);
+            Destroy(gameObject);
         }
 
         public void TakeDmg(float dmg)
