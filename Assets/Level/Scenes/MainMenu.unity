@@ -298,7 +298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 330507542}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1310268448}
+        m_TargetAssemblyTypeName: Ingame.Settings.MainMenu, Assembly-CSharp
+        m_MethodName: OpenTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &330507542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.28627452, g: 0.11764707, b: 0.11764707, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -878,6 +890,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19eb8cc4c4b9254784c0fd31311a65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonASprite: {fileID: 21300000, guid: fe73549984ceffd41b7afed26972b2ce, type: 3}
+  buttonAOnActiveSprite: {fileID: 21300000, guid: 6648f87b0f2844e4f810f3a41c8febe1, type: 3}
+  buttonA: {fileID: 1024577126}
+  buttonBSprite: {fileID: 21300000, guid: 851dd975031ae37448f887b81db277e6, type: 3}
+  buttonBOnActiveSprite: {fileID: 21300000, guid: 00aa3a2c0fe464044b9dbd38e37de446, type: 3}
+  buttonB: {fileID: 330507541}
+  buttonCSprite: {fileID: 21300000, guid: 61f083fe360401a4684054ebae29332a, type: 3}
+  buttonCOnActiveSprite: {fileID: 21300000, guid: 40ce1231edcd6c14c8b19401842cb333, type: 3}
+  buttonC: {fileID: 433821900}
 --- !u!1 &1338794980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.32941177, g: 0.27450982, b: 0.07450981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1153,7 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.11764707, g: 0.28627452, b: 0.28627452, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
