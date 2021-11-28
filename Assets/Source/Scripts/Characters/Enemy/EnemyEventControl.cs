@@ -26,7 +26,6 @@ namespace Ingame.Events
         }
         public void Die()
         {
-
            Destroy(this.gameObject, DISAPEARING_TIME);
             
         }

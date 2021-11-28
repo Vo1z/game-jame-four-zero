@@ -4,6 +4,12 @@ using UnityEngine;
 using Support;
 public class MenuManager : MonoSingleton<MenuManager>
 {
+
+    private void Start()
+    {
+        HideAll();
+        mainMenuCanvas.enabled = true;
+    }
     // Start is called before the first frame update
     [SerializeField]
     private Canvas mainMenuCanvas;

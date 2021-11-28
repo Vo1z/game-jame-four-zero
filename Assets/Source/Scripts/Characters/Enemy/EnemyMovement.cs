@@ -15,6 +15,7 @@ namespace Ingame.Movement {
         private Rigidbody2D _rb;
         private EnemyEventControl enemyEventControl;
         private bool isNormalMode= true;
+        private float _pushForce = 2000;
         private void Awake()
         {
             
@@ -53,7 +54,7 @@ namespace Ingame.Movement {
             dirX = dirX > MARGIN_ERROR_MAX ? 1 : (dirX < MARGIN_ERROR_MIN ? -1 : 0);
             RotateSprite(dirX > -1);
             var direction =   Vector3.up* dirY + Vector3.right*dirX;
-            direction *= enemyEventControl.EnemyStatsData.Speed*Time.fixedDeltaTime;
+            direction *= enemyEventControl.EnemyStatsData.Speed*Time.fixedDeltaTime*i;
             
             _rb.velocity = direction;
         }
@@ -64,6 +65,22 @@ namespace Ingame.Movement {
         public void RunAwayFromPlayer()
         {
             MakeMove(-1);
+        }
+        public void PushEnemy()
+        {
+            if (PlayerEventSystem.Instance == null)
+                return;
+            float dirY = (PlayerEventSystem.Instance.transform.position.y - this.transform.position.y);
+            dirY = dirY > MARGIN_ERROR_MAX ? 1 : (dirY < MARGIN_ERROR_MIN ? -1 : 0);
+
+
+            float dirX = (PlayerEventSystem.Instance.transform.position.x - this.transform.position.x);
+            dirX = dirX > MARGIN_ERROR_MAX ? 1 : (dirX < MARGIN_ERROR_MIN ? -1 : 0);
+
+            var direction = Vector3.up * dirY + Vector3.right * dirX;
+            direction *= enemyEventControl.EnemyStatsData.Speed * Time.fixedDeltaTime*_pushForce;
+            direction = -direction;
+            _rb.AddForce(direction);
         }
         public void RotateSprite(bool rot)
         {

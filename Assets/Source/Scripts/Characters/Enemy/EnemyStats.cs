@@ -3,33 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ingame.Events;
+using Ingame.Movement;
 namespace Ingame.Stats
 {
+    [RequireComponent(typeof(EnemyMovement),typeof(EnemyEventControl))]
     public class EnemyStats : MonoBehaviour, IActor
     {
-     
-        private const float MARGIN_OF_DEAD = 0f;
-        private const float MARGIN_ERROR = 0.001f;
         private EnemyEventControl _enemyEventControl;
-        private float _currHp;
-        private float _maxHp;
+        private EnemyMovement _movement;
+        private int _currHp;
+        private int _maxHp;
         public float CurrHp => _currHp;
-
+        private void Awake()
+        {
+            _movement = GetComponent<EnemyMovement>();
+            _enemyEventControl = GetComponent<EnemyEventControl>();
+        }
         public void SetInitHp(float i)
         {
-            _maxHp = i;
+            _maxHp = (int)i;
             _currHp = _maxHp;
         }
 
         public void Heal(float heal)
         {
-            _currHp += heal;
+            _currHp += (int)heal;
         }
 
         public void TakeDmg(float dmg)
         {
-            _currHp -= dmg;
-            if (Mathf.Abs(_currHp - MARGIN_ERROR) <= MARGIN_OF_DEAD)
+            _movement.PushEnemy();
+            _currHp -= (int)dmg;
+            Debug.Log(_currHp);
+            if (_currHp <= 0)
             {
                 _enemyEventControl.Die();
             }
