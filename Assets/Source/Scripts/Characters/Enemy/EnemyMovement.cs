@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support;
 
-namespace Ingame.Movement {
-    [RequireComponent(typeof(EnemyEventControl),typeof(Rigidbody2D))]
+namespace Ingame.Movement
+{
+    [RequireComponent(typeof(EnemyEventControl), typeof(Rigidbody2D))]
     public class EnemyMovement : MonoBehaviour
     {
 
@@ -14,21 +13,27 @@ namespace Ingame.Movement {
         private const float MARGIN_ERROR_MAX = 2f;
         private Rigidbody2D _rb;
         private EnemyEventControl enemyEventControl;
+
         private bool isNormalMode= true;
         private float _pushForce = 2000;
+
         private void Awake()
         {
-            
             enemyEventControl = GetComponent<EnemyEventControl>();
             _rb = GetComponent<Rigidbody2D>();
-            
         }
 
-    
+
         private void Start()
         {
-            GameController.Instance.OnFirstStagePassed += ChangeMode;
+            GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
         }
+
+        private void OnDestroy()
+        {
+            GameController.Instance.OnFirstStagePassed -= OnFirstStagePassed;
+        }
+
         private void LateUpdate()
         {
             if (isNormalMode)
@@ -39,10 +44,9 @@ namespace Ingame.Movement {
             {
                 RunAwayFromPlayer();
             }
-
         }
 
-        private void ChangeMode()
+        private void OnFirstStagePassed()
         {
             isNormalMode = false;
         }
@@ -50,7 +54,7 @@ namespace Ingame.Movement {
         {
             if (PlayerEventSystem.Instance == null)
                 return;
-            float dirY = (PlayerEventSystem.Instance.transform.position.y-this.transform.position.y);
+            float dirY = (PlayerEventSystem.Instance.transform.position.y - this.transform.position.y);
             dirY = dirY > MARGIN_ERROR_MAX ? 1 : (dirY < MARGIN_ERROR_MIN ? -1 : 0);
 
 
@@ -62,10 +66,12 @@ namespace Ingame.Movement {
             
             _rb.velocity = direction;
         }
+
         public void FollowPlayer()
         {
             MakeMove(1);
         }
+
         public void RunAwayFromPlayer()
         {
             MakeMove(-1);

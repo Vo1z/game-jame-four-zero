@@ -34,7 +34,6 @@ namespace Ingame.Stats
         {
             _movement.PushEnemy();
             _currHp -= (int)dmg;
-            Debug.Log(_currHp);
             if (_currHp <= 0)
             {
                 _enemyEventControl.Die();

@@ -58,7 +58,7 @@ namespace Ingame
             
             _playerEventSystem.Move(movingOffset.magnitude);
             
-            transform.position += (Vector3) deltaMovement;
+            _rigidbody2D.position += deltaMovement;
         }
 
         private void Rotate()
