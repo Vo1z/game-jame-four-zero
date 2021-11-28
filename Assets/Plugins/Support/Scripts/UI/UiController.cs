@@ -1,3 +1,6 @@
+using NaughtyAttributes;
+using UnityEngine;
+
 namespace Support.UI
 {
     /// <summary>
@@ -5,6 +8,8 @@ namespace Support.UI
     /// </summary>
     public class UiController : MonoSingleton<UiController>
     {
-        
+        [Required] [SerializeField] private Joystick _joystick;
+
+        public Joystick Joystick => _joystick;
     }
 }
