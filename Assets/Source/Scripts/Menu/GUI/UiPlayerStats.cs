@@ -1,5 +1,3 @@
-using System;
-using Extensions;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support.UI;
@@ -21,8 +19,6 @@ namespace Ingame
         [BoxGroup("Rage")]
         [SerializeField] [Range(0, 1f)] private float rageFrontSliderAnimationSpeed = 0.1f;
 
-        private const float PAUSE_BEFORE_SETTING_BACK_IMAGE = .2f;
-        
         private void Start()
         {
             PlayerEventSystem.Instance.OnPlayerHpChanged += OnPlayerHpChanged;
@@ -40,11 +36,9 @@ namespace Ingame
             currentHp = Mathf.Max(0, currentHp);
 
             var hpBarValue = Mathf.InverseLerp(0, PlayerEventSystem.Instance.Data.InitialHp, currentHp);
-
-            // this.SafeDebug($"HP {hpBarValue}");
             
             hpBarSlider.SetFrontImageWithLerping(hpFrontSliderAnimationSpeed, hpBarValue);
-            this.WaitAndDoCoroutine(PAUSE_BEFORE_SETTING_BACK_IMAGE, () => hpBarSlider.SetBackImageWithLerping(hpBackSliderAnimationSpeed, hpBarValue));
+            hpBarSlider.SetBackImageWithLerping(hpBackSliderAnimationSpeed, hpBarValue);
         }
 
         private void OnRageChanged(int currentAmountOfRage)
@@ -52,8 +46,6 @@ namespace Ingame
             currentAmountOfRage = Mathf.Max(0, currentAmountOfRage);
             
             var rageBarValue = Mathf.InverseLerp(0, PlayerEventSystem.Instance.RequiredAmountOfRage, currentAmountOfRage);
-            
-            // this.SafeDebug($"Rage {rageBarValue}");
             
             rageBarSlider.SetFrontImageWithLerping(rageFrontSliderAnimationSpeed, rageBarValue);
         }
