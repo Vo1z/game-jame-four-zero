@@ -11,6 +11,7 @@ namespace Ingame {
         private float _attackCoolDown;
         private bool _StopAction = false;
         private PlayerStats _player;
+        private bool _triggerOnceVariable = true;
         private void Awake()
         {
             _enemyEvent = GetComponent<EnemyEventControl>();
@@ -26,15 +27,21 @@ namespace Ingame {
         {
             while (!_StopAction) {
                 yield return new WaitForSeconds(_attackCoolDown);
-                if (_player!=null)
+                if (_player!=null && _triggerOnceVariable)
                 {
                     _player.TakeDmg(_attackDmg);
-
+                    
+                    
                 }
+                _triggerOnceVariable = true;
             }
         }
         public void SetTarget(PlayerStats player)
         {
+            if (_triggerOnceVariable)
+            {
+                _triggerOnceVariable = false;
+            }
             this._player = player;
         }
     }

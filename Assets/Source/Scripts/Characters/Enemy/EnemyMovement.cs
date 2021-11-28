@@ -53,7 +53,7 @@ namespace Ingame.Movement {
 
             float dirX = (player.transform.position.x - this.transform.position.x);
             dirX = dirX > MARGIN_ERROR_MAX ? 1 : (dirX < MARGIN_ERROR_MIN ? -1 : 0);
-
+            RotateSprite(dirX > -1);
             var direction =   Vector3.up* dirY + Vector3.right*dirX;
             direction *= enemyEventControl.EnemyStatsData.Speed*Time.fixedDeltaTime;
             
@@ -66,6 +66,17 @@ namespace Ingame.Movement {
         public void RunAwayFromPlayer()
         {
             MakeMove(-1);
+        }
+        public void RotateSprite(bool rot)
+        {
+            if (rot)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 }
