@@ -24,7 +24,7 @@ public class BackGroundChange : MonoBehaviour
         {
             EnterNormalMode();
         }
-        public virtual void EnterWeirdMode()
+        public virtual void EnterSecondMode()
         {
             _spriteRenderer.sprite = _backGroundOnWeird;
         }
@@ -32,16 +32,7 @@ public class BackGroundChange : MonoBehaviour
         {
             _spriteRenderer.sprite = _backGroundNormal;
         }
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(1)) {
-                EnterWeirdMode();
-            }
-            if (Input.GetMouseButtonDown(2))
-            {
-                EnterNormalMode();
-            }
-        }
+
         private void ReverseSprite()
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);

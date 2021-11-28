@@ -16,25 +16,12 @@ public class PostProcessing : MonoBehaviour
         secondStageVolume.weight = 0;
     }
 
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            EnterNormalMode();
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            EnterBerserkMode();
-        }
-    }
-    private void EnterBerserkMode()
+    public void EnterBerserkMode()
     {
         normalVolume.weight = 0;
         secondStageVolume.weight = 1;
     }
-    private void EnterNormalMode()
+    public void EnterNormalMode()
     {
         normalVolume.weight = 1;
         secondStageVolume.weight = 0;

@@ -10,18 +10,18 @@ namespace Ingame.Enviroment {
         private const int MAX_RAND_VAL = 10;
         private const int chance = 3;
 
-        public bool Roll()
+        private bool Roll()
         {
             int rand = Random.Range(MIN_RAND_VAL, MAX_RAND_VAL);
             var result = rand % chance == 0 ? true : false;
             return result;
         }
-        public override void EnterWeirdMode()
+        public override void EnterSecondMode()
         {
             bool result = Roll();
             if (result)
             {
-                base.EnterWeirdMode();
+                base.EnterSecondMode();
             }
         }
         
