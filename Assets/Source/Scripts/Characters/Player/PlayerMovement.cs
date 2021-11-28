@@ -1,8 +1,6 @@
 using Ingame.Events;
 using Support.UI;
-using UnityEngine;
-using Support;
-using static Support.GameController;
+using UnityEngine;  
 
 namespace Ingame
 {
@@ -22,36 +20,35 @@ namespace Ingame
             _rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
+        private void Start()
+        {
+            _playerEventSystem.OnPsychoMode += OnPsychoMode;
+        }
+
+        private void OnDestroy()
+        {
+            _playerEventSystem.OnPsychoMode -= OnPsychoMode;
+        }
+
         private void Update()
         {
             Move();
             Rotate();
         }
+        
+        private void OnPsychoMode(PsychoModeDeBuff deBuffType) 
+        {
+            switch (deBuffType)
+            {
+                case PsychoModeDeBuff.InverseControls:
+                    _directionReverse = true;
+                    break;
+                case PsychoModeDeBuff.Normal:
+                    _directionReverse = false;
+                    break;
+            }
+        }
 
-        private void OnWeirdThingHappend(TypeOfEvent type) 
-        {
-            switch (type)
-            {
-                case TypeOfEvent.ReverseControll:
-                    {
-                        _directionReverse = true;
-                        break;
-                    }
-            }
-        }
-        
-        private void DeactiveWeirdThingHappend(TypeOfEvent type)
-        {
-            switch (type)
-            {
-                case TypeOfEvent.ReverseControll:
-                    {
-                        _directionReverse = false;
-                        break;
-                    }
-            }
-        }
-        
         private void Move()
         {
             var movingDirection = new Vector2(UiController.Instance.Joystick.Horizontal, UiController.Instance.Joystick.Vertical);

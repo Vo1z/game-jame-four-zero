@@ -11,6 +11,7 @@ namespace Support
         public event Action<bool> OnLevelEnded;
         /// <summary>Event that invokes each time when level is restarted</summary>
         public event Action OnLevelRestart;
+        public event Action OnFirstStagePassed;
 
         private bool _isLevelEnded = false;
 
@@ -37,12 +38,9 @@ namespace Support
             OnLevelEnded?.Invoke(isVictory);
         }
 
-        //enum
-        public enum TypeOfEvent
+        public void PassFirstStage()
         {
-            ReverseControll
+            OnFirstStagePassed?.Invoke();
         }
-
-        
     }
 }

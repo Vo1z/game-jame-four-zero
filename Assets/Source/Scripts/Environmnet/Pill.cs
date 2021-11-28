@@ -6,7 +6,8 @@ namespace Ingame
     public class Pill : MonoBehaviour
     {
         [Tooltip("Amount of HP that player will gain by picking the pill")]
-        [SerializeField] private float hp;
+        [SerializeField] private float hp = 1;
+        [SerializeField] private int rage = 1;
 
         private void Awake()
         {
@@ -18,6 +19,8 @@ namespace Ingame
             if (other.TryGetComponent(out PlayerStats player))
             {
                 player.Heal(hp);
+                player.IncreaseRage(rage);
+                
                 Destroy(gameObject);
             }
         }
