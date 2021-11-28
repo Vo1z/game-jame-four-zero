@@ -1,4 +1,5 @@
 using Ingame.Events;
+using Support;
 using UnityEngine;
 
 namespace Ingame
@@ -19,17 +20,24 @@ namespace Ingame
         {
             PlayerEventSystem.Instance.OnPlayerMove += OnMove;
             PlayerEventSystem.Instance.OnDeath += OnDeath;
+            GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
         }
 
         private void OnDestroy()
         {
             PlayerEventSystem.Instance.OnPlayerMove -= OnMove;
             PlayerEventSystem.Instance.OnDeath -= OnDeath;
+            GameController.Instance.OnFirstStagePassed -= OnFirstStagePassed;
         }
 
         private void OnMove(float speed)
         {
             _animator.SetFloat("Speed", speed);
+        }
+
+        private void OnFirstStagePassed()
+        {
+            _animator.SetBool("IsBerserk", true);
         }
 
         private void OnDeath()
