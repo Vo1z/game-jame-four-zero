@@ -15,4 +15,4 @@ MonoBehaviour:
   _initHpBar: 5
   _speed: 100
   _attackDmg: 1
-  _attackCoolDown: 0.5
+  _attackCoolDown: 0.3

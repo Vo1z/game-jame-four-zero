@@ -19,6 +19,10 @@ namespace Ingame.Stats
             _movement = GetComponent<EnemyMovement>();
             _enemyEventControl = GetComponent<EnemyEventControl>();
         }
+        private void Start()
+        {
+            EnemyManager.Instance.AddEnemy(this);
+        }
         public void SetInitHp(float i)
         {
             _maxHp = (int)i;
@@ -37,6 +41,14 @@ namespace Ingame.Stats
             if (_currHp <= 0)
             {
                 _enemyEventControl.Die();
+            }
+        }
+        private void OnDestroy()
+        {
+            EnemyManager.Instance.RemoveEnemy(this);
+            if (EnemyManager.Instance.Win())
+            {
+
             }
         }
     }

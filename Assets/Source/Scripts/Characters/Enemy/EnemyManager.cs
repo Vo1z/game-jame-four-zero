@@ -4,33 +4,26 @@ using UnityEngine;
 using Support;
 using Ingame.Movement;
 using System;
-
-public class EnemyManager : MonoSingleton<EnemyManager>
-{
+using Ingame.Stats;
+namespace Ingame {
     
-
-    public event Action OnFollowEnter;
-    public event Action OnFollowExit;
-
-  
-    public void FollowEnter()
+    public class EnemyManager : MonoSingleton<EnemyManager>
     {
-        if (OnFollowEnter == null)
+        public List<EnemyStats> enemies = new List<EnemyStats>();
+
+        public void AddEnemy( EnemyStats enemy)
         {
-            return;
+            enemies.Add(enemy);
         }
-        OnFollowEnter();
-
-    }
-    public void FollowExit()
-    {
-        if (OnFollowExit == null)
+        public void RemoveEnemy(EnemyStats enemy)
         {
-            return;
+            enemies.Remove(enemy);
         }
-        OnFollowExit();
 
+        public bool Win()
+        {
+            return enemies.Count < 0;
+        }
+        
     }
-
-
 }
