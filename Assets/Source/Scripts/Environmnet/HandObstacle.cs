@@ -29,11 +29,6 @@ namespace Ingame
             GetComponent<Collider2D>().isTrigger = true;
         }
 
-        private void Start()
-        {
-            Activate();
-        }
-
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.TryGetComponent(out PlayerStats player))

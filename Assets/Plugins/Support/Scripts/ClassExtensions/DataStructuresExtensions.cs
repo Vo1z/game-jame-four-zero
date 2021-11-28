@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 namespace Extensions
 {
@@ -27,6 +28,11 @@ namespace Extensions
             }
             
             return default;
+        }
+
+        public static T GetRandom<T>(this List<T> source)
+        {
+            return source[Random.Range(0, source.Count - 1)];
         }
     }
 }
