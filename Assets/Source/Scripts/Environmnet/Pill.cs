@@ -8,6 +8,8 @@ namespace Ingame
         [Tooltip("Amount of HP that player will gain by picking the pill")]
         [SerializeField] private float hp = 1;
         [SerializeField] private int rage = 1;
+        [Space] 
+        [SerializeField] private GameObject destroyVFX;
 
         private void Awake()
         {
@@ -23,6 +25,12 @@ namespace Ingame
                 
                 Destroy(gameObject);
             }
+        }
+
+        private void OnDestroy()
+        {
+            if(destroyVFX != null)
+                Instantiate(destroyVFX, transform.position, Quaternion.identity);
         }
     }
 }

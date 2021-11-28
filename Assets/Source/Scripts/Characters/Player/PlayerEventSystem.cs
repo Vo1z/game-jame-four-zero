@@ -21,10 +21,12 @@ namespace Ingame.Events
         public PlayerStats PlayerStats => _playerStats;
         public PlayerAnimation PlayerAnimation => _playerAnimation;
 
-        public Action<float> OnPlayerHpChanged;
-        public Action<int> OnRageChanged;
-        public Action<float> OnPlayerMove;
+        public event Action<float> OnPlayerHpChanged;
+        public event Action<int> OnRageChanged;
+        public event Action<float> OnPlayerMove;
         public event Action<PsychoModeDeBuff> OnPsychoMode;
+        public event Action OnDeath;
+        
         public int RequiredAmountOfRage => Data.InitialRageRequired + 
                                            SaveLoadSystem.Instance.SaveData.CurrentLevelNumber.Value * Data.DeltaRage;
 
@@ -82,6 +84,11 @@ namespace Ingame.Events
             
             if(amountOfRage >= RequiredAmountOfRage)
                 GameController.Instance.PassFirstStage();
+        }
+
+        public void Die()
+        {
+            OnDeath?.Invoke();
         }
     }
 

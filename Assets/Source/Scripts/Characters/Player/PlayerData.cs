@@ -23,6 +23,8 @@ namespace Ingame
         [SerializeField] [MinMaxSlider(0, 40)] private Vector2 randomPsychoModeDuration;
         [BoxGroup("PsychoMode stats")]
         [SerializeField] private PsychoModeDeBuff[] deBuffsForPsychoModeStage;
+        [BoxGroup("VFX")]
+        [SerializeField] private GameObject deathVFX;
         
         
         public float InitialHp => initialHp;
@@ -34,5 +36,7 @@ namespace Ingame
         public Vector2 RandomPauseBetweenPsychoMods => randomPauseBetweenPsychoMods;
         public Vector2 RandomPsychoModeDuration => randomPsychoModeDuration;
         public PsychoModeDeBuff[] DeBuffsForPsychoModeStage => deBuffsForPsychoModeStage;
+
+        public GameObject DeathVFX => deathVFX;
     }
 }

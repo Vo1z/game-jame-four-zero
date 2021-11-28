@@ -10,29 +10,11 @@ namespace Ingame
         [SerializeField] private Animator levelTransitionCircleAnimator;
         [SerializeField] private Image spriteRenderer;
 
+        public const float PAUSE_BEFORE_LOADING_NEXT_LEVEL = 1.5f;
+
         private void Start()
         {
-            GameController.Instance.OnLevelEnded += OnLevelEnd;
-            
             PlayEnterLevel();
-        }
-
-        private void OnDestroy()
-        {
-            GameController.Instance.OnLevelEnded -= OnLevelEnd;
-        }
-
-        private void OnLevelEnd(bool _)
-        {
-            PlayExitLevel();
-        }
-
-        private void PlayExitLevel()
-        {
-            spriteRenderer.enabled = true;
-            
-            levelTransitionCircleAnimator.SetTrigger("ExitLevel");
-            this.DoAfterNextFrameCoroutine(() => levelTransitionCircleAnimator.ResetTrigger("ExitLevel"));
         }
 
         private void PlayEnterLevel()
@@ -41,6 +23,14 @@ namespace Ingame
             
             levelTransitionCircleAnimator.SetTrigger("EnterLevel");
             this.DoAfterNextFrameCoroutine(() => levelTransitionCircleAnimator.ResetTrigger("EnterLevel"));
+        }
+
+        public void PlayExitLevel()
+        {
+            spriteRenderer.enabled = true;
+            
+            levelTransitionCircleAnimator.SetTrigger("ExitLevel");
+            this.DoAfterNextFrameCoroutine(() => levelTransitionCircleAnimator.ResetTrigger("ExitLevel"));
         }
     }
 }

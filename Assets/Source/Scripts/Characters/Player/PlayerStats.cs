@@ -60,8 +60,8 @@ namespace Ingame
 
         private void Die()
         {
+            PlayerEventSystem.Instance.Die();
             GameController.Instance.EndLevel(false);
-            Destroy(gameObject);
         }
 
         public void TakeDmg(float dmg)

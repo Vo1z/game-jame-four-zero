@@ -19,3 +19,4 @@ MonoBehaviour:
   randomPauseBetweenPsychoMods: {x: 15, y: 30}
   randomPsychoModeDuration: {x: 5, y: 10}
   deBuffsForPsychoModeStage: 0000000001000000
+  deathVFX: {fileID: 4397334591890123670, guid: b0159ffb3464ec5478e3f6e6ce51d561, type: 3}
