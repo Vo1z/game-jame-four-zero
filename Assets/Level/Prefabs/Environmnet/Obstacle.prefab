@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5155643961962629814}
   - component: {fileID: 2800404536505933387}
   - component: {fileID: 2525161679640580763}
+  - component: {fileID: 1553782256836536210}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -71,9 +72,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101d94c948237ad4aa0c203efd24c513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyVFX: {fileID: 1221896956466360605, guid: fcd4b9651547f7749bff1420f0199f3a, type: 3}
   isEnemiesDamaged: 1
   damage: 1
   damageDealingDuration: 0.5
+--- !u!114 &1553782256836536210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155643961962629810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937897bc97684e34991e6679e9114633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseBeforeDestruction: 5
 --- !u!1 &6042757140514984497
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,5 +19,10 @@ namespace Ingame
             levelTransition.PlayExitLevel();
             this.WaitAndDoCoroutine(UiLevelTransition.PAUSE_BEFORE_LOADING_NEXT_LEVEL, () => LevelManager.Instance.LoadNextLevel());
         }
+
+        public void OpenMainMenu()
+        {
+            LevelManager.Instance.LoadLevel(0);
+        }
     }
 }

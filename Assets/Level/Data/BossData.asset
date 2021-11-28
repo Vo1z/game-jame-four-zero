@@ -17,3 +17,4 @@ MonoBehaviour:
   _attackDmg: 1
   _attackCoolDown: 0.5
   damageVFX: {fileID: 9170908161121530684, guid: e9050f838eb01db44b8958e4d8266866, type: 3}
+  deathVFX: {fileID: 3690831330794774275, guid: 8b84801adc361f449b4cf671a5faea02, type: 3}

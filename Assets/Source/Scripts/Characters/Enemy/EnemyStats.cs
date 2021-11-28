@@ -47,6 +47,7 @@ namespace Ingame.Stats
 
         private void OnDestroy()
         {
+            Instantiate(_enemyEventControl.EnemyStatsData.DeathVFX);
             EnemyManager.Instance.RemoveEnemy(this);
         }
     }

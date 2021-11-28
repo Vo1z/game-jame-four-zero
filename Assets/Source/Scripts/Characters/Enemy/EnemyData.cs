@@ -27,10 +27,12 @@ public class EnemyData : ScriptableObject
     private float _attackCoolDown;
     [Space]
     [SerializeField] private Destroyer damageVFX;
+    [SerializeField] private Destroyer deathVFX;
 
     public float InitHpBar => _initHpBar;
     public float AttackDmg => _attackDmg;
     public float AttackCoolDown => _attackCoolDown;
     public float Speed => _speed;
     public Destroyer DamageVFX => damageVFX;
+    public Destroyer DeathVFX => deathVFX;
 }

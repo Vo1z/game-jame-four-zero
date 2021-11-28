@@ -46,5 +46,5 @@ MonoBehaviour:
   displayingShadowDuration: 1.5
   fallingDuration: 0.8
   shadowScaleModifier: {x: 1.5, y: 1.5}
-  shadowPrefab: {fileID: 2935146247792822019, guid: 03b22d45c4e7747498cffd84108b8b09, type: 3}
+  shadowPrefab: {fileID: 2935146247792822019, guid: 80571bdd0582f104f9f92832be7711d3, type: 3}
   obstaclePrefab: {fileID: 2525161679640580763, guid: 177b354cb02cf4f45ab57312060f4b58, type: 3}

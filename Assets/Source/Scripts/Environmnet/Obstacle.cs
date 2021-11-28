@@ -1,3 +1,4 @@
+using System;
 using Extensions;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace Ingame
     [RequireComponent(typeof(Collider2D))]
     public class Obstacle : MonoBehaviour
     {
+        [SerializeField] private Destroyer destroyVFX;
         [SerializeField] private bool isEnemiesDamaged = false;
         [SerializeField] [Min(0)] private float damage = 1;
         [SerializeField] [Min(0)] private float damageDealingDuration = 1f;
@@ -47,6 +49,11 @@ namespace Ingame
             _obstacleState = ObstacleState.DealingDamage;
             
             this.WaitAndDoCoroutine(damageDealingDuration, () => _obstacleState = ObstacleState.Resting);
+        }
+
+        private void OnDestroy()
+        {
+            Instantiate(destroyVFX, transform.position, Quaternion.identity);
         }
     }
 }
