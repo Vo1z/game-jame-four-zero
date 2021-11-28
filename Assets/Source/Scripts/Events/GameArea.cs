@@ -13,6 +13,10 @@ namespace Ingame
     [RequireComponent(typeof(BoxCollider2D))]
     public class GameArea : MonoBehaviour
     {
+        [SerializeField] private bool isEnemiesSpawned = true;
+        [SerializeField] private bool isPillsSpawned = true;
+        [SerializeField] private bool isHandsShowed = true;
+        [SerializeField] private bool isObstaclesSpawned = true;
         [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenSpawningFallingObstacles;
         [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenSpawningPills;
         [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenSpawningEnemies;
@@ -39,10 +43,14 @@ namespace Ingame
             GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
             
             _isWorking = true;
-            StartCoroutine(SpawnFallingObstaclesRoutine());
-            StartCoroutine(ActivateHandsRoutine());
-            StartCoroutine(SpawnPillsRoutine());
-            StartCoroutine(SpawnEnemies());
+            if(isObstaclesSpawned)
+                StartCoroutine(SpawnFallingObstaclesRoutine());
+            if(isHandsShowed)
+                StartCoroutine(ActivateHandsRoutine());
+            if(isPillsSpawned)
+                StartCoroutine(SpawnPillsRoutine());
+            if(isEnemiesSpawned)
+                StartCoroutine(SpawnEnemies());
         }
 
         private void OnDestroy()

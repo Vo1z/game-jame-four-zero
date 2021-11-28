@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Support;
 public class MenuManager : MonoSingleton<MenuManager>
@@ -39,7 +37,7 @@ public class MenuManager : MonoSingleton<MenuManager>
         switch (type)
         {
             case MenuType.Start:
-                GameController.Instance.RestartLevel();
+                LevelManager.Instance.LoadNextLevel();
                 break;
 
             case MenuType.Credits:

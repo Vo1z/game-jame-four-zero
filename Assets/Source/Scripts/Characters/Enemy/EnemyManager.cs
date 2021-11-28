@@ -26,13 +26,11 @@ namespace Ingame
         public void RemoveEnemy(EnemyStats enemy)
         {
             enemies.Remove(enemy);
-        }
 
-        public bool Win()
-        {
-            return enemies.Count < 1;
+            if (enemies.Count < 1)
+                GameController.Instance.EndLevel(true);
         }
-
+        
         private void OnFirstStagePassed()
         {
             if (enemies.Count < 1)

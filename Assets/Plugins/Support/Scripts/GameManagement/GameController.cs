@@ -8,6 +8,7 @@ namespace Support
     /// </summary>
     public class GameController : MonoSingleton<GameController>
     {
+        private const float PAUSE_BEFORE_ENDING_THE_LEVEL = 1f;
         private const float BERSERKER_STAGE_MAX_DURATION = 8f;
         
         /// <summary>Event that invokes each time when level is ended</summary>
@@ -38,7 +39,7 @@ namespace Support
 
             _isLevelEnded = true;
 
-            OnLevelEnded?.Invoke(isVictory);
+            this.WaitAndDoCoroutine(PAUSE_BEFORE_ENDING_THE_LEVEL, () => OnLevelEnded?.Invoke(isVictory));
         }
 
         public void PassFirstStage()

@@ -27,7 +27,6 @@ namespace Ingame
             {
                 if (other.TryGetComponent(out IActor actor))
                 {
-                    this.SafeDebug("dealing damage");
                     actor.TakeDmg(damage);
                 }
             }

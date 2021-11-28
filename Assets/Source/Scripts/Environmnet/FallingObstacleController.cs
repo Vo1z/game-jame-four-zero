@@ -19,11 +19,6 @@ namespace Ingame
         private const float GIZMOS_CUBE_SIZE = .3f;
         private const float SHADOW_SPAWNING_OFFSET = .1f;
 
-        private void Start()
-        {
-            Fall(new Vector3(-30, -30));
-        }
-
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;

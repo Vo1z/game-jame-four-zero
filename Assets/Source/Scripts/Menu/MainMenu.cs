@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
@@ -49,10 +50,6 @@ namespace Ingame.Settings {
             MenuManager.Instance.SetMenu(type);
 
         }
-        private IEnumerator DelayCoroutine()
-        {
-            yield return new WaitForSeconds(_delay);
-        }
         private void PerformAction(Button btn,Sprite spr, Sprite sprOnActive, MenuManager.MenuType type)
         {
             StartCoroutine(PerformActionCoroutine(btn,spr, sprOnActive,type));
@@ -60,9 +57,7 @@ namespace Ingame.Settings {
         public void StartGame()
         {
             buttonA.image.sprite = buttonAOnActiveSprite;
-            StartCoroutine(DelayCoroutine());
-            MenuManager.Instance.SetMenu(MenuManager.MenuType.Start);
-            
+            this.WaitAndDoCoroutine(_delay, () => MenuManager.Instance.SetMenu(MenuManager.MenuType.Start));
         }
  
         public void OpenTutorial()

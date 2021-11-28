@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Ingame.Events;
 using Ingame.Movement;
@@ -43,13 +44,10 @@ namespace Ingame.Stats
                 _enemyEventControl.Die();
             }
         }
+
         private void OnDestroy()
         {
             EnemyManager.Instance.RemoveEnemy(this);
-            if (EnemyManager.Instance.Win())
-            {
-                GameController.Instance.EndLevel(true);
-            }
         }
     }
 }
