@@ -29,8 +29,11 @@ namespace Ingame
 
         private IEnumerator AttackCoroutine()
         {
+
+
             while (!_StopAction)
             {
+
                 yield return new WaitForSeconds(_attackCoolDown);
                 if (_player != null && _triggerOnceVariable)
                 {

@@ -14,7 +14,7 @@ namespace Ingame.Movement
         private Rigidbody2D _rb;
         private EnemyEventControl enemyEventControl;
 
-        private bool isNormalMode= true;
+        private static bool isNormalMode= true;
         private float _pushForce = 2000;
 
         private void Awake()
