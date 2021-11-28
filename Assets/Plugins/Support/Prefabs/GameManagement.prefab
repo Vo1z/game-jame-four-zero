@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 7753567492388623823}
   - component: {fileID: 8680045822913363849}
   - component: {fileID: 383982731207808341}
+  - component: {fileID: 781804656}
   m_Layer: 5
   m_Name: LevelTransitionCircle
   m_TagString: Untagged
@@ -1009,7 +1010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 400, y: -9}
+  m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 1309.9691, y: 605.09033}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &7753567492388623823
@@ -1027,7 +1028,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3725860943197169638}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1069,6 +1070,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &781804656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725860943197169638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fba1c3f9a28a2844998e346f3fdd3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelTransitionCircleAnimator: {fileID: 383982731207808341}
+  spriteRenderer: {fileID: 8680045822913363849}
 --- !u!1 &5879446324649248730
 GameObject:
   m_ObjectHideFlags: 0

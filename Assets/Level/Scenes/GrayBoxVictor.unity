@@ -1130,41 +1130,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &781804651 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3725860943197169638, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
-  m_PrefabInstance: {fileID: 3380718857738523387}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &781804652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781804651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fba1c3f9a28a2844998e346f3fdd3fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelTransitionCircleAnimator: {fileID: 781804653}
-  spriteRenderer: {fileID: 781804654}
---- !u!95 &781804653 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 383982731207808341, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
-  m_PrefabInstance: {fileID: 3380718857738523387}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &781804654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8680045822913363849, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
-  m_PrefabInstance: {fileID: 3380718857738523387}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781804651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &823487912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4657,10 +4622,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2697690143534119691, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3380718858009470457, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4708,10 +4669,6 @@ PrefabInstance:
     - target: {fileID: 3380718858009470459, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
       propertyPath: m_Name
       value: GameManagement
-      objectReference: {fileID: 0}
-    - target: {fileID: 7587422651858978396, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba63fe3fec44e5448c7b5fe222d7f92, type: 3}
