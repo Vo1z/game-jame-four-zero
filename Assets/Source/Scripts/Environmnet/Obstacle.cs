@@ -6,6 +6,7 @@ namespace Ingame
     [RequireComponent(typeof(Collider2D))]
     public class Obstacle : MonoBehaviour
     {
+        [SerializeField] private bool isEnemiesDamaged = false;
         [SerializeField] [Min(0)] private float damage = 1;
         [SerializeField] [Min(0)] private float damageDealingDuration = 1f;
 
@@ -16,16 +17,27 @@ namespace Ingame
         {
             GetComponent<Collider2D>().isTrigger = true;
         }
-        
+
         private void OnTriggerStay2D(Collider2D other)
         {
-            if(_obstacleState == ObstacleState.Resting)
+            if (_obstacleState == ObstacleState.Resting)
                 return;
 
-            if (other.TryGetComponent(out PlayerStats player))
+            if (isEnemiesDamaged)
             {
-                player.TakeDmg(damage);
-                _obstacleState = ObstacleState.Resting;
+                if (other.TryGetComponent(out IActor actor))
+                {
+                    actor.TakeDmg(damage);
+                    _obstacleState = ObstacleState.Resting;
+                }
+            }
+            else
+            {
+                if (other.TryGetComponent(out PlayerStats player))
+                {
+                    player.TakeDmg(damage);
+                    _obstacleState = ObstacleState.Resting;
+                }
             }
         }
 

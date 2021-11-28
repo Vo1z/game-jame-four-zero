@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Extensions;
 using Support;
 using Support.SLS;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace Ingame.Events
     public class PlayerEventSystem : MonoSingleton<PlayerEventSystem>
     {
         [SerializeField] private PlayerData playerData;
-
+        
         private PlayerMovement _playerMovement;
         private PlayerStats _playerStats;
         private PlayerAnimation _playerAnimation;
@@ -88,6 +87,8 @@ namespace Ingame.Events
         public void Die()
         {
             OnDeath?.Invoke();
+            GameController.Instance.EndLevel(false);
+            Destroy(gameObject);
         }
     }
 

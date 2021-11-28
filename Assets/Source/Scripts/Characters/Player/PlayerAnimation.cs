@@ -43,7 +43,6 @@ namespace Ingame
         private void OnDeath()
         {
             Instantiate(_playerEventSystem.Data.DeathVFX, transform.position, Quaternion.identity);
-            Destroy(gameObject);
         }
     }
 }

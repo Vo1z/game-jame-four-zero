@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomPauseBetweenSpawningFallingObstacles: {x: 2, y: 5}
   randomPauseBetweenSpawningPills: {x: 2, y: 5}
+  randomPauseBetweenSpawningEnemies: {x: 3, y: 8}
   randomPauseBetweenShowingHands: {x: 3, y: 8}
   fallingObstacleController: {fileID: 0}
   hands:
@@ -312,4 +313,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cloudPrefabForPill: {fileID: 4739349385638334313, guid: 30f4c3ba5365acc41abebd25cd2986ff, type: 3}
   pillPrefab: {fileID: 9176581358246055819, guid: ae67887b3ad8a6549946fcb7b88d225b, type: 3}
+  cloudPrefabForEnemy: {fileID: 7064166922519650679, guid: 8b84801adc361f449b4cf671a5faea02, type: 3}
+  enemyPrefab: {fileID: 2599969580575065871, guid: 5d2576236945fb34888680d876a70a41, type: 3}
