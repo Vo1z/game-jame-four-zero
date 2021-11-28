@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ingame;
 using UnityEngine;
 using NaughtyAttributes;
 
@@ -24,10 +25,12 @@ public class EnemyData : ScriptableObject
     [SerializeField]
     [Min(0)]
     private float _attackCoolDown;
+    [Space]
+    [SerializeField] private Destroyer damageVFX;
 
     public float InitHpBar => _initHpBar;
     public float AttackDmg => _attackDmg;
     public float AttackCoolDown => _attackCoolDown;
     public float Speed => _speed;
-
+    public Destroyer DamageVFX => damageVFX;
 }

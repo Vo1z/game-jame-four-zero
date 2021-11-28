@@ -35,7 +35,6 @@ namespace Ingame
                 if (_player != null && _triggerOnceVariable)
                 {
                     _player.TakeDmg(_attackDmg);
-                    
                 }
 
                 _triggerOnceVariable = true;

@@ -1,5 +1,4 @@
 using System;
-using Extensions;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support;
@@ -74,9 +73,6 @@ namespace Ingame
 
             _currentHp -= dmg;
             _currentHp = Mathf.Max(_currentHp, 0);
-            
-            this.SafeDebug(dmg);
-            this.SafeDebug(_currentHp);
             
             _playerEventSystem.TakeDamage();
             _playerEventSystem.ChangePlayerHp(_currentHp);

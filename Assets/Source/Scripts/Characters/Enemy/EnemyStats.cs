@@ -32,6 +32,7 @@ namespace Ingame.Stats
 
         public void TakeDmg(float dmg)
         {
+            Instantiate(_enemyEventControl.EnemyStatsData.DamageVFX, transform.position, Quaternion.identity);
             _movement.PushEnemy();
             _currHp -= (int)dmg;
             if (_currHp <= 0)

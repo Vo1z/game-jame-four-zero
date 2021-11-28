@@ -36,6 +36,7 @@ namespace Ingame
         private void Start()
         {
             GameController.Instance.OnLevelEnded += OnLevelEnd;
+            GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
             
             _isWorking = true;
             StartCoroutine(SpawnFallingObstaclesRoutine());
@@ -47,6 +48,13 @@ namespace Ingame
         private void OnDestroy()
         {
             GameController.Instance.OnLevelEnded -= OnLevelEnd;
+            GameController.Instance.OnFirstStagePassed -= OnFirstStagePassed;
+        }
+
+        private void OnFirstStagePassed()
+        {
+            StopAllCoroutines();
+            _isWorking = false;
         }
 
         private void OnLevelEnd(bool _)

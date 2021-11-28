@@ -16,3 +16,4 @@ MonoBehaviour:
   _speed: 100
   _attackDmg: 1
   _attackCoolDown: 0.5
+  damageVFX: {fileID: 9170908161121530684, guid: e9050f838eb01db44b8958e4d8266866, type: 3}
