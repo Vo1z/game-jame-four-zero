@@ -24,8 +24,9 @@ namespace Ingame
         [BoxGroup("PsychoMode stats")]
         [SerializeField] private PsychoModeDeBuff[] deBuffsForPsychoModeStage;
         [BoxGroup("VFX")]
-        [SerializeField] private GameObject deathVFX;
-        
+        [SerializeField] private Destroyer deathVFX;
+        [BoxGroup("VFX")] 
+        [SerializeField] private Destroyer damageVFX;
         
         public float InitialHp => initialHp;
         public float InitialSpeed => initialSpeed;
@@ -37,6 +38,7 @@ namespace Ingame
         public Vector2 RandomPsychoModeDuration => randomPsychoModeDuration;
         public PsychoModeDeBuff[] DeBuffsForPsychoModeStage => deBuffsForPsychoModeStage;
 
-        public GameObject DeathVFX => deathVFX;
+        public Destroyer DeathVFX => deathVFX;
+        public Destroyer DamageVFX => damageVFX;
     }
 }

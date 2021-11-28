@@ -25,7 +25,8 @@ namespace Ingame.Events
         public event Action<float> OnPlayerMove;
         public event Action<PsychoModeDeBuff> OnPsychoMode;
         public event Action OnDeath;
-        
+        public event Action OnPlayerDamageTaken;
+
         public int RequiredAmountOfRage => Data.InitialRageRequired + 
                                            SaveLoadSystem.Instance.SaveData.CurrentLevelNumber.Value * Data.DeltaRage;
 
@@ -89,6 +90,11 @@ namespace Ingame.Events
             OnDeath?.Invoke();
             GameController.Instance.EndLevel(false);
             Destroy(gameObject);
+        }
+
+        public void TakeDamage()
+        {
+            OnPlayerDamageTaken?.Invoke();
         }
     }
 

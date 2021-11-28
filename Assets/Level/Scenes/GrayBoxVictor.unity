@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 2599969580575065872, guid: 5d2576236945fb34888680d876a70a41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d2576236945fb34888680d876a70a41, type: 3}
 --- !u!1 &146819729
@@ -1534,6 +1538,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4512851148024999600, guid: 9bb4cb401c7ca754390a7b6f7024257e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4512851148024999601, guid: 9bb4cb401c7ca754390a7b6f7024257e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1591,9 +1599,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 438683521, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 630137556, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 914397484, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737248745, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5644686831655584101, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: m_Name
       value: GameArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644686831655584102, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: hands.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5644686831655584102, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: hands.Array.data[0]
@@ -1602,15 +1630,15 @@ PrefabInstance:
     - target: {fileID: 5644686831655584102, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: hands.Array.data[1]
       value: 
-      objectReference: {fileID: 1974640682}
+      objectReference: {fileID: 83735065}
     - target: {fileID: 5644686831655584102, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: hands.Array.data[2]
       value: 
-      objectReference: {fileID: 1923518650}
+      objectReference: {fileID: 83735065}
     - target: {fileID: 5644686831655584102, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: hands.Array.data[3]
       value: 
-      objectReference: {fileID: 1122952954}
+      objectReference: {fileID: 83735065}
     - target: {fileID: 5644686831655584102, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: hands.Array.data[4]
       value: 
@@ -1619,6 +1647,22 @@ PrefabInstance:
       propertyPath: fallingObstacleController
       value: 
       objectReference: {fileID: 1050930919}
+    - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_Size.x
+      value: 17.827532
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_Size.y
+      value: 37.13327
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.05099964
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12535858
+      objectReference: {fileID: 0}
     - target: {fileID: 5644686831655584104, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: m_RootOrder
       value: 6

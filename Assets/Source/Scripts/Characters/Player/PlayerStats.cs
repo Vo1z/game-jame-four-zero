@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support;
@@ -30,8 +31,6 @@ namespace Ingame
             
             _currentHp = _playerEventSystem.Data.InitialHp;
             _currentSpeed = _playerEventSystem.Data.InitialSpeed;
-            
-            TakeDmg(5);
         }
 
         private void OnDestroy()
@@ -76,6 +75,10 @@ namespace Ingame
             _currentHp -= dmg;
             _currentHp = Mathf.Max(_currentHp, 0);
             
+            this.SafeDebug(dmg);
+            this.SafeDebug(_currentHp);
+            
+            _playerEventSystem.TakeDamage();
             _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
         }
@@ -96,7 +99,7 @@ namespace Ingame
             rageAmount = Math.Abs(rageAmount);
             
             _currentRage += rageAmount;
-            _currentHp = Mathf.Min(_currentRage, _playerEventSystem.RequiredAmountOfRage);
+            _currentRage = Mathf.Min(_currentRage, _playerEventSystem.RequiredAmountOfRage);
 
             _playerEventSystem.ChangePlayerRage(_currentRage);
         }
