@@ -6,19 +6,19 @@ using NaughtyAttributes;
 
 
 namespace Ingame.Movement {
-    [RequireComponent(typeof(EnemyEventControl))]
+    [RequireComponent(typeof(EnemyEventControl),typeof(Rigidbody2D))]
     public class EnemyMovement : MonoBehaviour
     {
         
-        [SerializeField]
-        private EnemyEventControl enemyEventControl;
+        
         [SerializeField]
         [Required]
         private PlayerEventSystem player;
         private const float MARGIN_ERROR_MIN = .0001f;
         private const float MARGIN_ERROR_MAX = 2f;
         private Rigidbody2D _rb;
-        
+        private EnemyEventControl enemyEventControl;
+        private bool isNormalMode= true;
         private void Awake()
         {
             enemyEventControl = GetComponent<EnemyEventControl>();
@@ -27,16 +27,26 @@ namespace Ingame.Movement {
         }
         private void LateUpdate()
         {
-            FollowPlayer();
+            if (isNormalMode)
+            {
+                FollowPlayer();
+            }
+            else
+            {
+                RunAwayFromPlayer();
+            }
+
         }
         private void Start()
         {
-            EnemyManager.Instance.OnFollowEnter +=FollowPlayer;
-            EnemyManager.Instance.OnFollowExit += RunAwayFromPlayer;
+           // EnemyManager.Instance.OnFollowEnter +=FollowPlayer;
+           // EnemyManager.Instance.OnFollowExit += RunAwayFromPlayer;
         }
         
         private void MakeMove(int i)
         {
+            if (player == null)
+                return;
             float dirY = (player.transform.position.y-this.transform.position.y);
             dirY = dirY > MARGIN_ERROR_MAX ? 1 : (dirY < MARGIN_ERROR_MIN ? -1 : 0);
 

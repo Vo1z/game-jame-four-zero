@@ -9,8 +9,8 @@ namespace Ingame {
         private EnemyEventControl _enemyEvent;
         private float _attackDmg;
         private float _attackCoolDown;
-        private bool _isAttackCharging = false;
-        private bool _isPlayerOnRange = false;
+        private bool _StopAction = false;
+        private PlayerStats _player;
         private void Awake()
         {
             _enemyEvent = GetComponent<EnemyEventControl>();
@@ -18,27 +18,24 @@ namespace Ingame {
             _attackCoolDown = _enemyEvent.EnemyStatsData.AttackCoolDown;
         }
 
+        private void Start()
+        {
+            StartCoroutine(AttackCoroutine());
+        }
+        private IEnumerator AttackCoroutine()
+        {
+            while (!_StopAction) {
+                yield return new WaitForSeconds(_attackCoolDown);
+                if (_player!=null)
+                {
+                    _player.TakeDmg(_attackDmg);
 
-        private IEnumerator AttackCoroutine(PlayerStats player)
-        {
-            _isAttackCharging = true;
-            yield return new WaitForSeconds(_attackCoolDown);
-            if (_isPlayerOnRange)
-            {
-                player.TakeDmg(_attackDmg);
-            }
-            _isAttackCharging = false;
-        }
-        public void PeformAttackOnPlayer(PlayerStats player)
-        {
-            if (!_isAttackCharging)
-            {
-                StartCoroutine(AttackCoroutine(player));
+                }
             }
         }
-        public void ChangeRangeCondition(bool b)
+        public void SetTarget(PlayerStats player)
         {
-            _isPlayerOnRange = b;
+            this._player = player;
         }
     }
 }
