@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Support;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -16,11 +15,23 @@ public class PostProcessing : MonoBehaviour
         secondStageVolume.weight = 0;
     }
 
+    private void Start()
+    {
+        EnterNormalMode();
+        GameController.Instance.OnFirstStagePassed += EnterBerserkMode;
+    }
+
+    private void OnDestroy()
+    {
+        GameController.Instance.OnFirstStagePassed -= EnterBerserkMode;
+    }
+
     public void EnterBerserkMode()
     {
         normalVolume.weight = 0;
         secondStageVolume.weight = 1;
     }
+    
     public void EnterNormalMode()
     {
         normalVolume.weight = 1;

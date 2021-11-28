@@ -1,9 +1,7 @@
 using System;
-using Extensions;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support;
-using Support.SLS;
 using UnityEngine;
 
 namespace Ingame
@@ -11,14 +9,14 @@ namespace Ingame
     [RequireComponent(typeof(PlayerEventSystem))]
     public class PlayerStats : MonoBehaviour, IActor
     {
+        private const float SECOND_STAGE_DAMAGE = 10;
+        
         private PlayerEventSystem _playerEventSystem;
-        [ReadOnly]
-        private float _currentHp;
-        [ReadOnly]
-        private float _currentSpeed;
-        [ReadOnly]
-        private float _currentRage = 0;
-
+        [ReadOnly] private float _currentHp;
+        [ReadOnly] private float _currentSpeed;
+        [ReadOnly] private int _currentRage = 0;
+        private bool _isInvincible = false;
+        
         public float CurrentSpeed => _currentSpeed;
 
         private void Awake()
@@ -28,10 +26,30 @@ namespace Ingame
 
         private void Start()
         {
+            GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
+            
             _currentHp = _playerEventSystem.Data.InitialHp;
             _currentSpeed = _playerEventSystem.Data.InitialSpeed;
             
             TakeDmg(5);
+        }
+
+        private void OnDestroy()
+        {
+            GameController.Instance.OnFirstStagePassed -= OnFirstStagePassed;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.TryGetComponent(out IActor enemy))
+            {
+                enemy.TakeDmg(SECOND_STAGE_DAMAGE);
+            }
+        }
+
+        private void OnFirstStagePassed()
+        {
+            _isInvincible = true;
         }
 
         private void CheckPlayerCondition()
@@ -48,12 +66,13 @@ namespace Ingame
 
         public void TakeDmg(float dmg)
         {
+            if(_isInvincible)
+                return;
+            
             dmg = Mathf.Abs(dmg);
 
             _currentHp -= dmg;
-            _currentHp = Mathf.Clamp(_currentHp, 0, _playerEventSystem.Data.InitialHp);
-            
-            this.SafeDebug($"CurrentHp {_currentHp}");
+            _currentHp = Mathf.Max(_currentHp, 0);
             
             _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
@@ -64,9 +83,7 @@ namespace Ingame
             heal = Mathf.Abs(heal);
 
             _currentHp += heal;
-            _currentHp = Mathf.Clamp(_currentHp, 0, _playerEventSystem.Data.InitialHp);
-            
-            this.SafeDebug($"CurrentHp {_currentHp}");
+            _currentHp = Mathf.Min(_currentHp, _playerEventSystem.Data.InitialHp);
             
             _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
@@ -77,11 +94,9 @@ namespace Ingame
             rageAmount = Math.Abs(rageAmount);
             
             _currentRage += rageAmount;
-            _currentRage = Mathf.Clamp(_currentRage, 0, _playerEventSystem.RequiredAmountOfRage);
+            _currentHp = Mathf.Min(_currentRage, _playerEventSystem.RequiredAmountOfRage);
 
-            this.SafeDebug($"CurrentRage {_currentRage}");
-            
-            _playerEventSystem.ChangePlayerRage(rageAmount);
+            _playerEventSystem.ChangePlayerRage(_currentRage);
         }
     }
 }
