@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285ad68ca66b3fe43a6959a227ccc40a, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  initialHp: 10
+  initialHp: 50
   initialSpeed: 10
   initialRageRequired: 5
   deltaRage: 3
   randomPauseBetweenPsychoMods: {x: 15, y: 30}
   randomPsychoModeDuration: {x: 5, y: 10}
   deBuffsForPsychoModeStage: 0000000001000000
-  deathVFX: {fileID: 4397334591890123670, guid: b0159ffb3464ec5478e3f6e6ce51d561, type: 3}
+  deathVFX: {fileID: 2696463244974208722, guid: b0159ffb3464ec5478e3f6e6ce51d561, type: 3}
+  damageVFX: {fileID: 9170908161121530684, guid: e9050f838eb01db44b8958e4d8266866, type: 3}

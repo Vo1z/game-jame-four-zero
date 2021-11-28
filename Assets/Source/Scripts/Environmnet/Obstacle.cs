@@ -27,18 +27,20 @@ namespace Ingame
             {
                 if (other.TryGetComponent(out IActor actor))
                 {
+                    this.SafeDebug("dealing damage");
                     actor.TakeDmg(damage);
-                    _obstacleState = ObstacleState.Resting;
                 }
             }
             else
             {
                 if (other.TryGetComponent(out PlayerStats player))
                 {
+                    this.SafeDebug("dealing damage");
                     player.TakeDmg(damage);
-                    _obstacleState = ObstacleState.Resting;
                 }
             }
+            
+            _obstacleState = ObstacleState.Resting;
         }
 
         public void Activate()

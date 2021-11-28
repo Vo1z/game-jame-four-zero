@@ -20,6 +20,7 @@ namespace Ingame
         {
             PlayerEventSystem.Instance.OnPlayerMove += OnMove;
             PlayerEventSystem.Instance.OnDeath += OnDeath;
+            PlayerEventSystem.Instance.OnPlayerDamageTaken += OnDamageTaken;
             GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
         }
 
@@ -27,6 +28,7 @@ namespace Ingame
         {
             PlayerEventSystem.Instance.OnPlayerMove -= OnMove;
             PlayerEventSystem.Instance.OnDeath -= OnDeath;
+            PlayerEventSystem.Instance.OnPlayerDamageTaken -= OnDamageTaken;
             GameController.Instance.OnFirstStagePassed -= OnFirstStagePassed;
         }
 
@@ -43,6 +45,11 @@ namespace Ingame
         private void OnDeath()
         {
             Instantiate(_playerEventSystem.Data.DeathVFX, transform.position, Quaternion.identity);
+        }
+
+        private void OnDamageTaken()
+        {
+            Instantiate(_playerEventSystem.Data.DamageVFX, transform.position, Quaternion.identity);
         }
     }
 }
