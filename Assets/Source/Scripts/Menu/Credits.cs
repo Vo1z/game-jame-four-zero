@@ -6,6 +6,6 @@ public class Credits : MonoBehaviour
 {
     public void GoBack()
     {
-        SceneManager.LoadScene(0);
+        MenuManager.Instance.SetMenu(MenuManager.MenuType.MainMenu);
     }
 }

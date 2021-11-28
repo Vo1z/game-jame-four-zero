@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 using UnityEngine.UI;
-
+using Support;
 namespace Ingame.Settings { 
     public class MainMenu : MonoBehaviour
     {
@@ -41,30 +41,38 @@ namespace Ingame.Settings {
 
         private float _delay = .13f;
 
-        private IEnumerator PerformActionCoroutine(Button btn,Sprite spr, Sprite sprOnActive,int scene)
+        private IEnumerator PerformActionCoroutine(Button btn,Sprite spr, Sprite sprOnActive, MenuManager.MenuType type)
         {
             btn.image.sprite = sprOnActive;
             yield return new WaitForSeconds(_delay);
             btn.image.sprite = spr;
-            SceneManager.LoadScene(scene);
+            MenuManager.Instance.SetMenu(type);
+
         }
-        private void PerformAction(Button btn,Sprite spr, Sprite sprOnActive, int scene)
+        private IEnumerator DelayCoroutine()
         {
-            StartCoroutine(PerformActionCoroutine(btn,spr, sprOnActive, scene));
+            yield return new WaitForSeconds(_delay);
+        }
+        private void PerformAction(Button btn,Sprite spr, Sprite sprOnActive, MenuManager.MenuType type)
+        {
+            StartCoroutine(PerformActionCoroutine(btn,spr, sprOnActive,type));
         }
         public void StartGame()
         {
-            PerformAction(buttonA, buttonASprite, buttonAOnActiveSprite, 0);
+            buttonA.image.sprite = buttonAOnActiveSprite;
+            StartCoroutine(DelayCoroutine());
+            MenuManager.Instance.SetMenu(MenuManager.MenuType.Start);
             
         }
  
         public void OpenTutorial()
         {
-            PerformAction(buttonB, buttonBSprite, buttonBOnActiveSprite, 0);
+            
+            PerformAction(buttonB, buttonBSprite, buttonBOnActiveSprite, MenuManager.MenuType.Tutorial);
         }
         public void OpenCredits()
         {
-            PerformAction(buttonC, buttonCSprite, buttonCOnActiveSprite, 1);
+            PerformAction(buttonC, buttonCSprite, buttonCOnActiveSprite, MenuManager.MenuType.Credits);
         }
     }
 }
