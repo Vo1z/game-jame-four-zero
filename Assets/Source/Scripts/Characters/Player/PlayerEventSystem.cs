@@ -74,7 +74,6 @@ namespace Ingame.Events
 
         public void ChangePsychoMode(PsychoModeDeBuff psychoModeDeBuff)
         {
-            this.SafeDebug(psychoModeDeBuff);
             OnPsychoMode?.Invoke(psychoModeDeBuff);
         }
 
