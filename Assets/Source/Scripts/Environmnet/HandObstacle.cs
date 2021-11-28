@@ -15,7 +15,7 @@ namespace Ingame
         private enum HandStage { Moving, Grabbing, Resting }
 
         private const float GIZMOS_SPHERE_SIZE = .2f;
-        private const float MINIMAL_DISTANCE_BETWEEN_VECTORS = .01f;
+        private const float MINIMAL_DISTANCE_BETWEEN_VECTORS = .1f;
         private const float HAND_DAMAGE = 999999999999999f;
 
         private HandAnimation _handAnimation;

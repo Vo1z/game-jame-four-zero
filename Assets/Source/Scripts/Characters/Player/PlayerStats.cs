@@ -1,7 +1,9 @@
+using System;
 using Extensions;
 using Ingame.Events;
 using NaughtyAttributes;
 using Support;
+using Support.SLS;
 using UnityEngine;
 
 namespace Ingame
@@ -14,6 +16,8 @@ namespace Ingame
         private float _currentHp;
         [ReadOnly]
         private float _currentSpeed;
+        [ReadOnly]
+        private float _currentRage = 0;
 
         public float CurrentSpeed => _currentSpeed;
 
@@ -47,6 +51,9 @@ namespace Ingame
             dmg = Mathf.Abs(dmg);
 
             _currentHp -= dmg;
+            _currentHp = Mathf.Clamp(_currentHp, 0, _playerEventSystem.Data.InitialHp);
+            
+            this.SafeDebug($"CurrentHp {_currentHp}");
             
             _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
@@ -57,9 +64,24 @@ namespace Ingame
             heal = Mathf.Abs(heal);
 
             _currentHp += heal;
+            _currentHp = Mathf.Clamp(_currentHp, 0, _playerEventSystem.Data.InitialHp);
+            
+            this.SafeDebug($"CurrentHp {_currentHp}");
             
             _playerEventSystem.ChangePlayerHp(_currentHp);
             CheckPlayerCondition();
+        }
+
+        public void IncreaseRage(int rageAmount)
+        {
+            rageAmount = Math.Abs(rageAmount);
+            
+            _currentRage += rageAmount;
+            _currentRage = Mathf.Clamp(_currentRage, 0, _playerEventSystem.RequiredAmountOfRage);
+
+            this.SafeDebug($"CurrentRage {_currentRage}");
+            
+            _playerEventSystem.ChangePlayerRage(rageAmount);
         }
     }
 }
