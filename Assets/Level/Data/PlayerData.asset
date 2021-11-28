@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHp: 50
   initialSpeed: 10
-  initialRageRequired: 5
+  initialRageRequired: 2
   deltaRage: 3
   randomPauseBetweenPsychoMods: {x: 15, y: 30}
   randomPsychoModeDuration: {x: 5, y: 10}
-  deBuffsForPsychoModeStage: 0000000001000000
+  deBuffsForPsychoModeStage: 00000000
   deathVFX: {fileID: 2696463244974208722, guid: b0159ffb3464ec5478e3f6e6ce51d561, type: 3}
   damageVFX: {fileID: 9170908161121530684, guid: e9050f838eb01db44b8958e4d8266866, type: 3}

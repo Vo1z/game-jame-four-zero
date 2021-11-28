@@ -1729,11 +1729,11 @@ PrefabInstance:
       objectReference: {fileID: 1050930919}
     - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: m_Size.x
-      value: 17.827532
+      value: 12.885022
       objectReference: {fileID: 0}
     - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: m_Size.y
-      value: 37.13327
+      value: 30.506824
       objectReference: {fileID: 0}
     - target: {fileID: 5644686831655584103, guid: 579c11c3a4f72c54c9d25b1aff8bd46a, type: 3}
       propertyPath: m_Offset.x

@@ -1,4 +1,5 @@
 using System;
+using Extensions;
 
 namespace Support
 {
@@ -7,6 +8,8 @@ namespace Support
     /// </summary>
     public class GameController : MonoSingleton<GameController>
     {
+        private const float BERSERKER_STAGE_MAX_DURATION = 8f;
+        
         /// <summary>Event that invokes each time when level is ended</summary>
         public event Action<bool> OnLevelEnded;
         /// <summary>Event that invokes each time when level is restarted</summary>
@@ -41,6 +44,8 @@ namespace Support
         public void PassFirstStage()
         {
             OnFirstStagePassed?.Invoke();
+
+            this.WaitAndDoCoroutine(BERSERKER_STAGE_MAX_DURATION, () => GameController.Instance.EndLevel(true));
         }
     }
 }

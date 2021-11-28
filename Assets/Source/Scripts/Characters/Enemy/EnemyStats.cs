@@ -1,9 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Ingame.Events;
 using Ingame.Movement;
+using Support;
+
 namespace Ingame.Stats
 {
     [RequireComponent(typeof(EnemyMovement),typeof(EnemyEventControl))]
@@ -49,7 +48,7 @@ namespace Ingame.Stats
             EnemyManager.Instance.RemoveEnemy(this);
             if (EnemyManager.Instance.Win())
             {
-
+                GameController.Instance.EndLevel(true);
             }
         }
     }

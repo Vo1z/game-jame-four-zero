@@ -1,20 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Support;
-using Ingame.Movement;
-using System;
 using Ingame.Stats;
-namespace Ingame {
-    
+
+namespace Ingame
+{
     public class EnemyManager : MonoSingleton<EnemyManager>
     {
         public List<EnemyStats> enemies = new List<EnemyStats>();
 
-        public void AddEnemy( EnemyStats enemy)
+        private void Start()
+        {
+            GameController.Instance.OnFirstStagePassed += OnFirstStagePassed;
+        }
+
+        private void OnDestroy()
+        {
+            GameController.Instance.OnFirstStagePassed -= OnFirstStagePassed;
+        }
+
+        public void AddEnemy(EnemyStats enemy)
         {
             enemies.Add(enemy);
         }
+
         public void RemoveEnemy(EnemyStats enemy)
         {
             enemies.Remove(enemy);
@@ -22,8 +30,15 @@ namespace Ingame {
 
         public bool Win()
         {
-            return enemies.Count < 0;
+            return enemies.Count < 1;
         }
-        
+
+        private void OnFirstStagePassed()
+        {
+            if (enemies.Count < 1)
+            {
+                GameController.Instance.EndLevel(true);
+            }
+        }
     }
 }
