@@ -9,11 +9,7 @@ namespace Ingame.Movement {
     [RequireComponent(typeof(EnemyEventControl),typeof(Rigidbody2D))]
     public class EnemyMovement : MonoBehaviour
     {
-        
-        
-        [SerializeField]
-        [Required]
-        private PlayerEventSystem player;
+
         private const float MARGIN_ERROR_MIN = .0001f;
         private const float MARGIN_ERROR_MAX = 2f;
         private Rigidbody2D _rb;
@@ -21,10 +17,12 @@ namespace Ingame.Movement {
         private bool isNormalMode= true;
         private void Awake()
         {
+            
             enemyEventControl = GetComponent<EnemyEventControl>();
             _rb = GetComponent<Rigidbody2D>();
             
         }
+        
         private void LateUpdate()
         {
             if (isNormalMode)
@@ -45,13 +43,13 @@ namespace Ingame.Movement {
         
         private void MakeMove(int i)
         {
-            if (player == null)
+            if (PlayerEventSystem.Instance == null)
                 return;
-            float dirY = (player.transform.position.y-this.transform.position.y);
+            float dirY = (PlayerEventSystem.Instance.transform.position.y-this.transform.position.y);
             dirY = dirY > MARGIN_ERROR_MAX ? 1 : (dirY < MARGIN_ERROR_MIN ? -1 : 0);
 
 
-            float dirX = (player.transform.position.x - this.transform.position.x);
+            float dirX = (PlayerEventSystem.Instance.transform.position.x - this.transform.position.x);
             dirX = dirX > MARGIN_ERROR_MAX ? 1 : (dirX < MARGIN_ERROR_MIN ? -1 : 0);
             RotateSprite(dirX > -1);
             var direction =   Vector3.up* dirY + Vector3.right*dirX;
