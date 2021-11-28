@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ingame.Events;
 using NaughtyAttributes;
-
+using Support;
 
 namespace Ingame.Movement {
     [RequireComponent(typeof(EnemyEventControl),typeof(Rigidbody2D))]
@@ -23,7 +23,12 @@ namespace Ingame.Movement {
             _rb = GetComponent<Rigidbody2D>();
             
         }
-        
+
+    
+        private void Start()
+        {
+            GameController.Instance.OnFirstStagePassed += ChangeMode;
+        }
         private void LateUpdate()
         {
             if (isNormalMode)
@@ -36,12 +41,11 @@ namespace Ingame.Movement {
             }
 
         }
-        private void Start()
+
+        private void ChangeMode()
         {
-           // EnemyManager.Instance.OnFollowEnter +=FollowPlayer;
-           // EnemyManager.Instance.OnFollowExit += RunAwayFromPlayer;
+            isNormalMode = false;
         }
-        
         private void MakeMove(int i)
         {
             if (PlayerEventSystem.Instance == null)
@@ -93,5 +97,6 @@ namespace Ingame.Movement {
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
+
     }
 }
