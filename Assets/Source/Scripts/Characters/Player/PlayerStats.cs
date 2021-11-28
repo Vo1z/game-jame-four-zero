@@ -15,7 +15,7 @@ namespace Ingame
         [ReadOnly] private float _currentHp;
         [ReadOnly] private float _currentSpeed;
         [ReadOnly] private int _currentRage = 0;
-        private bool _isInvincible = false;
+        private bool _isInBerserkMode = false;
         
         public float CurrentSpeed => _currentSpeed;
 
@@ -41,6 +41,9 @@ namespace Ingame
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!_isInBerserkMode)
+                return;
+
             if (other.TryGetComponent(out IActor enemy))
             {
                 enemy.TakeDmg(SECOND_STAGE_DAMAGE);
@@ -49,7 +52,7 @@ namespace Ingame
 
         private void OnFirstStagePassed()
         {
-            _isInvincible = true;
+            _isInBerserkMode = true;
         }
 
         private void CheckPlayerCondition()
@@ -66,7 +69,7 @@ namespace Ingame
 
         public void TakeDmg(float dmg)
         {
-            if(_isInvincible)
+            if(_isInBerserkMode)
                 return;
             
             dmg = Mathf.Abs(dmg);

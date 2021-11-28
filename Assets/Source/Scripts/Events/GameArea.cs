@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Extensions;
 using Ingame.Events;
+using Ingame.Stats;
 using NaughtyAttributes;
 using Support;
 using UnityEngine;
@@ -14,12 +15,16 @@ namespace Ingame
     {
         [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenSpawningFallingObstacles;
         [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenSpawningPills;
+        [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenSpawningEnemies;
         [SerializeField] [MinMaxSlider(0, 10)] private Vector2 randomPauseBetweenShowingHands;
         [SerializeField] private FallingObstacleController fallingObstacleController;
         [SerializeField] private List<HandObstacle> hands;
         [Space] 
+        [Required] [SerializeField] private GameObject cloudPrefabForPill;
         [Required] [SerializeField] private Pill pillPrefab;
-        
+        [Required] [SerializeField] private GameObject cloudPrefabForEnemy;
+        [Required] [SerializeField] private EnemyStats enemyPrefab;
+
         private BoxCollider2D _boxCollider2D;
         private bool _isWorking = false;
         
@@ -36,6 +41,7 @@ namespace Ingame
             StartCoroutine(SpawnFallingObstaclesRoutine());
             StartCoroutine(ActivateHandsRoutine());
             StartCoroutine(SpawnPillsRoutine());
+            StartCoroutine(SpawnEnemies());
         }
 
         private void OnDestroy()
@@ -94,7 +100,24 @@ namespace Ingame
                 
                 yield return new WaitForSeconds(pauseBetweenSpawningPills);
 
+                Instantiate(cloudPrefabForPill, spawningPos, Quaternion.identity);
                 Instantiate(pillPrefab, spawningPos, Quaternion.identity);
+            }
+        }
+
+        private IEnumerator SpawnEnemies()
+        {
+            while (_isWorking)
+            {
+                var pauseBetweenSpawningEnemies = Random.Range(randomPauseBetweenSpawningEnemies.x, randomPauseBetweenSpawningEnemies.y);
+                var minBounds = _boxCollider2D.bounds.min;
+                var maxBounds = _boxCollider2D.bounds.max;
+                var spawningPos = new Vector3(Random.Range(minBounds.x, maxBounds.x), Random.Range(minBounds.x, maxBounds.x), 0);
+                
+                yield return new WaitForSeconds(pauseBetweenSpawningEnemies);
+
+                Instantiate(cloudPrefabForEnemy, spawningPos, Quaternion.identity);
+                Instantiate(enemyPrefab, spawningPos, Quaternion.identity);
             }
         }
 
